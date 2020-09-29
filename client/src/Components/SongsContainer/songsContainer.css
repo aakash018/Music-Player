@@ -1,0 +1,62 @@
+.songsContainer {
+  position: relative;
+  width: 100vw;
+  height: 300px;
+
+  background: linear-gradient(
+    to bottom,
+    rgb(0, 0, 0, 0),
+    rgb(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.5),
+    rgb(0, 0, 0, 0.75),
+    rgb(0, 0, 0)
+  );
+
+  z-index: 2;
+}
+
+.songWraper {
+  margin-left: 10px;
+
+  overflow: auto;
+  width: 96%;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  overflow-x: auto;
+}
+
+.searchSongContainer {
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.5s ease-in;
+}
+
+.search-songsContainer {
+  width: 220px;
+
+  background-color: rgb(14, 17, 20);
+
+  position: absolute;
+  right: -10px;
+  top: -20px;
+
+  border-radius: 50px;
+
+  transform: translateX(70%);
+
+  text-align: end;
+
+  transition: all 1s ease-in-out;
+}
+
+.search-songsContainer-icon {
+  position: absolute;
+  left: 21px;
+  top: 50%;
+
+  transform: translateY(-50%);
+}

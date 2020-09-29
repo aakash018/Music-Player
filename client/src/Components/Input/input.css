@@ -1,0 +1,21 @@
+.inputContainer input {
+  width: 70%;
+
+  padding: 5px;
+  outline: none;
+  border: 1.5px solid #11f78c9f;
+  color: white;
+  background-color: rgb(17, 17, 17);
+
+  transition: all 0.5s ease-in;
+
+  font-family: Poppins;
+}
+
+.inputContainer input:focus {
+  background-color: rgb(31, 31, 31);
+
+  border-bottom: 1.5px solid #19f7e598;
+  border-left: 1.5px solid #19f7e598;
+  border-right: 1.5px solid #19f7e598;
+}

@@ -1,0 +1,24 @@
+.volumeContainer {
+  position: relative;
+
+  width: 125px;
+  height: 30px;
+
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+
+  background-color: rgb(14, 17, 20);
+  transform: translateX(70%);
+  transition: all 1s ease-in-out;
+}
+
+.volumeSliderContainer {
+  position: absolute;
+  top: 0px;
+  right: 25px;
+  width: 60px;
+}
+
+.volumeContainer .volumeIcon {
+  margin-left: 5px;
+}

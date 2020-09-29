@@ -1,0 +1,14 @@
+.songGroupContainer {
+  position: fixed;
+  top: 20px;
+  left: 50px;
+  transform: translateX(-60%);
+  opacity: 0;
+  pointer-events: none;
+
+  transition: all 0.8s ease-in-out;
+}
+
+.dropDownMenu-songGroups {
+  transform: translate(23%, -15px);
+}

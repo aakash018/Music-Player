@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Pompiere&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #272727;
+  /* background-color: #616161; */
+  font-family: Poppins;
+  overflow-x: hidden;
+}
+
+.audioPlayerContainer {
+  position: fixed;
+  top: 50px;
+  right: 0;
+  transform: translateX(60%);
+  transition: all 1s ease-in-out;
+}
+
+.volumeControllerContainer {
+  position: fixed;
+  top: 10px;
+  right: 0px;
+}
+
+.show {
+  transform: translateX(0%);
+  opacity: 1;
+  pointer-events: all;
+}

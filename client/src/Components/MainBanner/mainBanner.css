@@ -1,0 +1,129 @@
+.mainBanner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.mainBannerWraper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 750px;
+  height: 500px;
+}
+
+.liveText {
+  position: fixed;
+  left: 440px;
+  top: 120px;
+  font-family: Pompiere;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 80px;
+  /* line-height: 180px; */
+
+  color: #0bdab5;
+
+  transition: all 1s ease-in-out;
+}
+
+.liveTexthide {
+  transform: translateX(-80%);
+  opacity: 0;
+  user-select: none;
+}
+
+.musicText {
+  position: fixed;
+  right: 260px;
+  top: 380px;
+
+  font-family: Pompiere;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 80px;
+  /* line-height: 180px; */
+
+  color: #0bdab5;
+
+  transition: all 1s ease-in-out;
+}
+
+.mainBannerWraper .musicTexthide {
+  transform: translateX(80%);
+  opacity: 0;
+  user-select: none;
+}
+
+.mainBannerWraper .playButton {
+  position: fixed;
+  border-radius: 50%;
+  width: 399px;
+  height: 399px;
+
+  border-radius: 50%;
+
+  background: linear-gradient(to bottom, #11f78c9f, #19f7e598);
+
+  transition: all 1s ease-in-out;
+}
+
+.mainBannerWraper .playButtonhide {
+  transform: translateY(-20%);
+  background: linear-gradient(
+    to bottom,
+    #11f78c9f,
+    #19f7e51f,
+    #19f7e51f,
+    #19f7e500
+  );
+  opacity: 0.3;
+}
+
+.playButtonWraper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+
+  background-color: #272727;
+}
+
+.mainBannerWraper .playButtonTriangle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -50%);
+
+  width: 40px;
+  height: 40px;
+
+  border-top: 90px solid transparent;
+  border-left: 160px solid rgba(70, 194, 167, 0.842);
+  border-bottom: 90px solid transparent;
+  border-radius: 3px;
+  transition: all 0.6s ease-in-out;
+  cursor: pointer;
+
+  z-index: -1;
+}
+
+.mainBannerWraper .playButtonTrianglehide {
+  border-left: 160px solid rgba(70, 194, 167, 0.6);
+}
+
+.mainBannerWraper .playing {
+  transform: translate(-50%, -50%);
+  width: 160px;
+  height: 160px;
+  border: 50px solid rgba(70, 194, 167, 0.842);
+  border-top: transparent;
+  border-bottom: transparent;
+}
