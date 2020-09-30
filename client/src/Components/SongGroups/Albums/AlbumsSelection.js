@@ -69,7 +69,7 @@ function AlbumsSelection({ show, statusOfMusicPlaying }) {
   };
 
   return (
-    <div>
+    <>
       <ModalContainer show={show} closeCallback={handleModalClose}>
         <div className="albumSelection-modal">
           <section className="search-section">
@@ -82,7 +82,7 @@ function AlbumsSelection({ show, statusOfMusicPlaying }) {
           <DropDownMenu show={true} options={dropDownOptions} />
         </div>
       </ModalContainer>
-    </div>
+    </>
   );
 }
 

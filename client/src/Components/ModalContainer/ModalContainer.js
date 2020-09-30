@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 
 import "./modalContainer.css";
-function ModalContainer({ show, children, closeCallback }) {
+function ModalContainer({
+  show,
+  children,
+  closeCallback,
+  width,
+  height,
+  overflow,
+}) {
   const [showModal, setShowModal] = useState(true);
 
   useEffect(() => {
@@ -14,6 +21,12 @@ function ModalContainer({ show, children, closeCallback }) {
     setShowModal((prevShow) => !prevShow);
   };
 
+  const styleForModal = {
+    width: width || "300px",
+    height: height || "300px",
+    overflow: overflow || "auto",
+  };
+
   return (
     <div className="modal-main">
       {showModal && (
@@ -24,6 +37,7 @@ function ModalContainer({ show, children, closeCallback }) {
           ></div>
           <div
             className={!showModal ? "modalContainer" : "modalContainer active"}
+            style={styleForModal}
           >
             {children}
           </div>

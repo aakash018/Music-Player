@@ -1,14 +1,17 @@
 const express = require("express");
+const fileUpload = require("express-fileupload");
 
 const app = express();
 const PORT = 5000;
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+const uploadSong = require("./api/songUpload");
 
-app.get("/api/data", (req, res) => {
-  res.json({ msg: "Hi There" });
-});
+app.use(express.urlencoded({ extended: false }));
+// app.use(express.json());
+// app.use(express.static(__dirname + "public"));
+app.use(fileUpload());
+
+app.use("/api", uploadSong);
 
 app.listen(PORT, (e) => {
   if (e) {

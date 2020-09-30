@@ -1,0 +1,13 @@
+.addMusicContainer {
+  position: fixed;
+  top: 70px;
+  left: 50px;
+  transform: translateX(-80px);
+  opacity: 0;
+  pointer-events: none;
+
+  font-size: 1.7rem;
+  color: aliceblue;
+
+  transition: all 0.6s ease-in-out;
+}

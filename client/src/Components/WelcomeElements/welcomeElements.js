@@ -6,6 +6,7 @@ import { Playing } from "../../Context/Playing";
 import SongsContainer from "../SongsContainer/songsContainer";
 import VolumeControl from "../VolumeControl/volumeControl";
 import SongGroups from "../SongGroups/songGroups";
+import AddMusic from "../AddMusic/AddMusic";
 
 const WelcomeElements = ({
   toggle,
@@ -38,8 +39,9 @@ const WelcomeElements = ({
         }}
       >
         <MainBanner toggle={toggle} />
-        <div className="songGroups">
+        <div className="main-menu-options">
           <SongGroups />
+          <AddMusic />
         </div>
         <div className="audioPlayerContainer">
           <AudioPlayer

@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import axios from "axios";
 
 //Componenets
 import WelcomeElements from "./Components/WelcomeElements/welcomeElements";
@@ -14,13 +13,6 @@ function App() {
   // }
 
   // const images = importAll(require.context("./", false, /\.(mp3)$/));
-
-  useEffect(() => {
-    axios
-      .get("/api/data")
-      .then((res) => console.log(res.data))
-      .catch((e) => console.log(e));
-  });
 
   let indexOfCurrentSong = useRef(localStorage.getItem("-music-app-key") || 0);
 
