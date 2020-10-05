@@ -7,22 +7,17 @@ import "./App.css";
 import { useGetSongs } from "./CustomHooks/useGetSongs";
 
 function App() {
-  // function importAll(r) {
-  //   // console.log(r.keys()[0].slice(2).split("_"));
-  //   return r.keys().map(r);
-  // }
-
-  // const images = importAll(require.context("./", false, /\.(mp3)$/));
+  const [songs, setSongs] = useGetSongs();
 
   let indexOfCurrentSong = useRef(localStorage.getItem("-music-app-key") || 0);
-
-  const [songs, setSongs] = useGetSongs();
 
   const [currentSong, setCurrentSong] = useState(() => {
     if (songs[indexOfCurrentSong.current] != null) {
       return songs[indexOfCurrentSong.current].song;
-    } else {
+    } else if (songs[0] != null) {
       return songs[0].song;
+    } else {
+      return;
     }
   });
 
@@ -38,6 +33,9 @@ function App() {
 
   const toggle = () => {
     if (audio.paused) {
+      if (audio.src === "") {
+        audio.src = songs[indexOfCurrentSong.current].song;
+      }
       document.title = songs[indexOfCurrentSong.current].name;
       audio.play();
     } else {

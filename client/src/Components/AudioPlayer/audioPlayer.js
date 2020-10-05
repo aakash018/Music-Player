@@ -91,65 +91,69 @@ function AudioPlayer({
 
   return (
     <div>
-      <div className={slider ? "audioPlayerWraper " : "audioPlayerWraper show"}>
-        <section className="coverSection" onClick={handleSlider}>
-          <img
-            src={
-              handleFindingAlbum(
-                songs[indexOfCurrentSong] != null
-                  ? songs[indexOfCurrentSong].album
-                  : songs[0].album
-              ).img
-            }
-            className="coverImage"
-            alt=""
-          />
-        </section>
+      {songs[0] != null && (
+        <div
+          className={slider ? "audioPlayerWraper " : "audioPlayerWraper show"}
+        >
+          <section className="coverSection" onClick={handleSlider}>
+            <img
+              src={
+                handleFindingAlbum(
+                  songs[indexOfCurrentSong] != null
+                    ? songs[indexOfCurrentSong].album
+                    : songs[0].album
+                ).img
+              }
+              className="coverImage"
+              alt=""
+            />
+          </section>
 
-        <section className="playerSection">
-          <section className="displayName">
-            <SongNameDisplay
-              songName={
-                songs[indexOfCurrentSong] != null
-                  ? songs[indexOfCurrentSong].name
-                  : songs[0].name
-              }
-            />
+          <section className="playerSection">
+            <section className="displayName">
+              <SongNameDisplay
+                songName={
+                  songs[indexOfCurrentSong] != null
+                    ? songs[indexOfCurrentSong].name
+                    : songs[0].name
+                }
+              />
+            </section>
+            <section className="progressBar">
+              <ProgressBar audio={audio} />
+            </section>
+            <div className="controls">
+              <RoundButtons
+                text={<MdSkipBackward fontSize="1rem" />}
+                width="30px"
+                height="30px"
+                handleClick={handlePrevSong}
+              />
+              <RoundButtons
+                text={
+                  playing ? (
+                    <MdPause fontSize="1rem" />
+                  ) : (
+                    <MdPlay fontSize="1rem" />
+                  )
+                }
+                width="30px"
+                height="30px"
+                handleClick={() => {
+                  setPlaying(!playing);
+                  toggle();
+                }}
+              />
+              <RoundButtons
+                text={<MdSkipForward fontSize="1rem" />}
+                width="30px"
+                height="30px"
+                handleClick={handleNextSong}
+              />
+            </div>
           </section>
-          <section className="progressBar">
-            <ProgressBar audio={audio} />
-          </section>
-          <div className="controls">
-            <RoundButtons
-              text={<MdSkipBackward fontSize="1rem" />}
-              width="30px"
-              height="30px"
-              handleClick={handlePrevSong}
-            />
-            <RoundButtons
-              text={
-                playing ? (
-                  <MdPause fontSize="1rem" />
-                ) : (
-                  <MdPlay fontSize="1rem" />
-                )
-              }
-              width="30px"
-              height="30px"
-              handleClick={() => {
-                setPlaying(!playing);
-                toggle();
-              }}
-            />
-            <RoundButtons
-              text={<MdSkipForward fontSize="1rem" />}
-              width="30px"
-              height="30px"
-              handleClick={handleNextSong}
-            />
-          </div>
-        </section>
-      </div>
+        </div>
+      )}
     </div>
   );
 }

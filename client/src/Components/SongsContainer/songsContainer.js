@@ -18,6 +18,7 @@ import useGetScrollPositon from "../../CustomHooks/useGetScrollPosition";
 function SongsContainer({ songs, setCurrentSong, audio }) {
   const [playChosedSong, setPlayChosedSong] = useState(false);
   const { setPlaying, currentSong, playing } = useContext(Playing);
+  const indexofCurrentSong = localStorage.getItem("-music-app-key");
 
   const [songsForCards, setSongsForCards] = useState(songs);
   const [searchSlider, setSearchSlider] = useState(false);
@@ -88,16 +89,20 @@ function SongsContainer({ songs, setCurrentSong, audio }) {
         </section>
       </div>
       <ScrollContainer className="songWraper">
-        {songsForCards.map((song) => (
+        {songsForCards.map((song, index) => (
           <div
-            key={song.id}
+            key={song._id}
             onClick={() => {
               handleSongChange(song.song);
             }}
           >
             <SongCards
               name={song.name}
-              isPlaying={currentSong === song.song && playing}
+              isPlaying={
+                (currentSong === song.song ||
+                  index === parseInt(indexofCurrentSong)) &&
+                playing
+              }
               album={handleFindAlbum(song.album)}
             />
           </div>

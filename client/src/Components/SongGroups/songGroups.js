@@ -18,6 +18,8 @@ function SongGroups() {
   const { audio, setPlaying } = useContext(Playing);
   const [showalbumMenu, setShowalbumMenu] = useState(false);
 
+  // const [albSongs, setAlbSongs] = useState([]);
+
   const [statusOfMusicPlaying, setStatusOfMusicPlaying] = useState(Boolean);
 
   useEffect(() => {

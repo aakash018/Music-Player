@@ -1,11 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 //Components
 import Input from "../../Input/Input";
+import Select from "../../Select/Select";
+
+//Albums
+import { albums } from "../../../Music/songs";
 
 function MusicAddForm() {
   const [songName, setSongName] = useState("");
+  const [albumName, setAlbumName] = useState("");
   const [song, setSong] = useState({});
+  const [albumsNameList, setAlbumsNameList] = useState([]);
+
+  useEffect(() => {
+    const tempo_albumNameList = [];
+    albums.forEach((album) => {
+      tempo_albumNameList.push(album.name);
+    });
+    setAlbumsNameList(tempo_albumNameList);
+  }, []);
 
   const handleInputChange = (input, setValue) => {
     setValue(input);
@@ -17,6 +31,7 @@ function MusicAddForm() {
 
     data.append("name", songName);
     data.append("song", song);
+    data.append("album", albumName);
 
     axios
       .post("/api/uploadSong", data, {
@@ -39,6 +54,7 @@ function MusicAddForm() {
           type="file"
           stateToSet={setSong}
         />
+        <Select options={albumsNameList} stateToSet={setAlbumName} />
         <button type="submit">Submit</button>
       </form>
     </div>

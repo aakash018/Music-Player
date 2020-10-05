@@ -1,17 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
+
 import DropDownMenu from "../../DropDownMenu/DropDownMenu";
 
-import { albums, AllSongsList } from "../../../Music/songs";
+import { albums } from "../../../Music/songs";
 import { Playing } from "../../../Context/Playing";
 import ModalContainer from "../../ModalContainer/ModalContainer";
 import SearchBar from "../../SearchBar/SearchBar";
 
 import "./albumSelection.css";
+import { FillSongs } from "../../../CustomHooks/useFillSongs";
 function AlbumsSelection({ show, statusOfMusicPlaying }) {
   const { songs, setSongs, audio, setPlaying, setCurrentSong } = useContext(
     Playing
   );
-
+  // const [albSongs, setAlbSongs] = useState([]);
   const [changeCurrentAlbum, setChangeCurrentAlbum] = useState(false);
 
   //This is needed to convert albums name and function to change album to object for DropMenu.
@@ -50,17 +53,17 @@ function AlbumsSelection({ show, statusOfMusicPlaying }) {
   };
 
   const handleAlbumChange = (albumName) => {
-    const filterSongsByAlbum = AllSongsList.filter((song) => {
-      return song.album === albumName || albumName === "";
-    });
-
-    setPlaying(false);
-    setSongs(filterSongsByAlbum);
-    setChangeCurrentAlbum(true);
+    console.log(albumName);
+    axios
+      .get("/api/albumChange", { params: { albumName: albumName } })
+      .then((res) => {
+        setPlaying(false);
+        setSongs(FillSongs(res.data.songsFromAlbum));
+        setChangeCurrentAlbum(true);
+      });
   };
 
   const handleModalClose = () => {
-    console.log(statusOfMusicPlaying);
     if (!statusOfMusicPlaying) {
       setPlaying(true);
       audio.play();
