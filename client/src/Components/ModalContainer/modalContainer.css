@@ -12,8 +12,6 @@
   left: 0;
   background-color: rgba(27, 27, 27, 0.678);
 
-  opacity: 0;
-  pointer-events: none;
   cursor: pointer;
   z-index: 3;
 }
@@ -27,12 +25,8 @@
   transform: translate(-50%, -50%);
 
   border-radius: 8px;
-  opacity: 0;
+
   z-index: 4;
-
-  pointer-events: none;
-
-  transition: all 0.4s ease-in-out;
 }
 
 .modalContainer::-webkit-scrollbar {
@@ -40,6 +34,19 @@
 }
 
 .active {
-  opacity: 1;
-  pointer-events: all;
+  animation-name: animate-modal-show;
+  animation-delay: 0s;
+  animation-duration: 0.4s;
+  animation-timing-function: ease-in;
+}
+
+@keyframes animate-modal-show {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }

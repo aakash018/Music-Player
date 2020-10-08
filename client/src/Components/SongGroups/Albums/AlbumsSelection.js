@@ -10,6 +10,7 @@ import SearchBar from "../../SearchBar/SearchBar";
 
 import "./albumSelection.css";
 import { FillSongs } from "../../../CustomHooks/useFillSongs";
+import AddAlbums from "./AddAlbums/AddAlbums";
 function AlbumsSelection({ show, statusOfMusicPlaying }) {
   const { songs, setSongs, audio, setPlaying, setCurrentSong } = useContext(
     Playing
@@ -75,6 +76,9 @@ function AlbumsSelection({ show, statusOfMusicPlaying }) {
     <>
       <ModalContainer show={show} closeCallback={handleModalClose}>
         <div className="albumSelection-modal">
+          <section className="add-Album" >
+            <AddAlbums />
+          </section>
           <section className="search-section">
             <SearchBar
               callback={handleSearch}

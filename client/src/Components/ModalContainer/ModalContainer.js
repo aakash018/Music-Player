@@ -31,10 +31,7 @@ function ModalContainer({
     <div className="modal-main">
       {showModal && (
         <>
-          <div
-            className={!showModal ? "overlay-modal" : "overlay-modal active"}
-            onClick={handleModalClose}
-          ></div>
+          <div className="overlay-modal" onClick={handleModalClose}></div>
           <div
             className={!showModal ? "modalContainer" : "modalContainer active"}
             style={styleForModal}

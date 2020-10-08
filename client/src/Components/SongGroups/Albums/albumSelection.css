@@ -9,3 +9,9 @@
 
   transform: translateX(15%);
 }
+
+.add-Album {
+  position: absolute;
+  top: 15px;
+  left: 5px;
+}
