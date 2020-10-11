@@ -9,6 +9,7 @@ const PORT = 5000;
 const uploadSong = require("./api/songUpload");
 const songsData = require("./api/songsData");
 const albumChange = require("./api/albumChange");
+const albumsData = require("./api/albumData")
 
 //Database Connection
 mongoose.connect(
@@ -31,6 +32,7 @@ app.use(fileUpload());
 app.use("/api", uploadSong);
 app.use("/api", songsData);
 app.use("/api", albumChange);
+app.use("/api", albumsData);
 
 //Server INIT
 app.listen(PORT, (e) => {

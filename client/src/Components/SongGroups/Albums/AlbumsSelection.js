@@ -11,11 +11,13 @@ import SearchBar from "../../SearchBar/SearchBar";
 import "./albumSelection.css";
 import { FillSongs } from "../../../CustomHooks/useFillSongs";
 import AddAlbums from "./AddAlbums/AddAlbums";
+import AlbumsForm from "./AddAlbums/AlbumsAddingForm/AlbumsForm";
 function AlbumsSelection({ show, statusOfMusicPlaying }) {
   const { songs, setSongs, audio, setPlaying, setCurrentSong } = useContext(
     Playing
   );
-  // const [albSongs, setAlbSongs] = useState([]);
+
+  const [showAlbumFormModal, setAlbumFormModal] = useState(false);
   const [changeCurrentAlbum, setChangeCurrentAlbum] = useState(false);
 
   //This is needed to convert albums name and function to change album to object for DropMenu.
@@ -76,8 +78,11 @@ function AlbumsSelection({ show, statusOfMusicPlaying }) {
     <>
       <ModalContainer show={show} closeCallback={handleModalClose}>
         <div className="albumSelection-modal">
-          <section className="add-Album" >
-            <AddAlbums />
+          <section className="add-Album">
+            <AddAlbums
+              showModal={showAlbumFormModal}
+              setShowModal={setAlbumFormModal}
+            />
           </section>
           <section className="search-section">
             <SearchBar
@@ -89,6 +94,11 @@ function AlbumsSelection({ show, statusOfMusicPlaying }) {
           <DropDownMenu show={true} options={dropDownOptions} />
         </div>
       </ModalContainer>
+      <section className="albumFormModal">
+        <ModalContainer show={showAlbumFormModal} width="400px" height="400px">
+          <AlbumsForm />
+        </ModalContainer>
+      </section>
     </>
   );
 }

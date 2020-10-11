@@ -5,9 +5,11 @@ import WelcomeElements from "./Components/WelcomeElements/welcomeElements";
 
 import "./App.css";
 import { useGetSongs } from "./CustomHooks/useGetSongs";
+import { useGetAlbums } from "./CustomHooks/useGetAlbums";
 
 function App() {
   const [songs, setSongs] = useGetSongs();
+  const [albums] = useGetAlbums()
 
   let indexOfCurrentSong = useRef(localStorage.getItem("-music-app-key") || 0);
 
@@ -46,6 +48,7 @@ function App() {
 
   return (
     <div className="App">
+      {console.log(albums)}
       <WelcomeElements
         toggle={toggle}
         setCurrentSong={setCurrentSong}

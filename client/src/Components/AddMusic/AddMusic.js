@@ -8,7 +8,7 @@ import RoundButtons from "../RoundButtons/roundButtons";
 
 //Style
 import "./addMusic.css";
-import MusicAddModal from "./MusicAddModal/MusicAddModal";
+import MusicAddModal from "./MusicAddModal";
 
 function AddMusic() {
   const topPosition = useGetTopPosition();

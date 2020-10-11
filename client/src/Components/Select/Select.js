@@ -8,10 +8,7 @@ function Select({ options, stateToSet }) {
   return (
     <>
       <select onChange={handleChange}>
-        <option
-          selected={true}
-          style={{ display: "none", fontFamily: "Poppins" }}
-        >
+        <option style={{ display: "none", fontFamily: "Poppins" }}>
           -- Select an Album --
         </option>
         {options.map((option, index) => (
