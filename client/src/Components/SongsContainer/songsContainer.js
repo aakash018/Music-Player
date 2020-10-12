@@ -12,12 +12,13 @@ import MdSearch from "react-ionicons/lib/MdSearch";
 //Style
 import "./songsContainer.css";
 import { Playing } from "../../Context/Playing";
-import { albums } from "../../Music/songs";
+// import { albums } from "../../Music/songs";
 import useGetScrollPositon from "../../CustomHooks/useGetScrollPosition";
 
 function SongsContainer({ songs, setCurrentSong, audio }) {
   const [playChosedSong, setPlayChosedSong] = useState(false);
-  const { setPlaying, currentSong, playing } = useContext(Playing);
+  const { setPlaying, currentSong, playing, albums} = useContext(Playing);
+  
   const indexofCurrentSong = localStorage.getItem("-music-app-key");
 
   const [songsForCards, setSongsForCards] = useState(songs);
@@ -96,6 +97,7 @@ function SongsContainer({ songs, setCurrentSong, audio }) {
               handleSongChange(song.song);
             }}
           >
+            {albums[0] != null && 
             <SongCards
               name={song.name}
               isPlaying={
@@ -105,6 +107,7 @@ function SongsContainer({ songs, setCurrentSong, audio }) {
               }
               album={handleFindAlbum(song.album)}
             />
+            }
           </div>
         ))}
       </ScrollContainer>

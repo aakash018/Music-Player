@@ -15,6 +15,7 @@ const WelcomeElements = ({
   audio,
   currentSong,
   setSongs,
+  albums,
   ...rest
 }) => {
   const [playing, setPlaying] = useState(false);
@@ -36,9 +37,11 @@ const WelcomeElements = ({
           setSongs,
           songs,
           audio,
+          albums
         }}
       >
         <MainBanner toggle={toggle} />
+       
         <div className="main-menu-options">
           <SongGroups />
           <AddMusic />

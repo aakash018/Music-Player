@@ -14,7 +14,7 @@ export function useGetAlbums() {
 
     function fillSong(songData) {
       const requiredSongName = images.filter((name) => {
-        console.log("Name" + name)
+        
         return name.slice(14).split(".")[0] === songData.name;
       });
       songData.img = requiredSongName[0];

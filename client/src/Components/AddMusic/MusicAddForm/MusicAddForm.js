@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 //Components
 import Input from "../../Input/Input";
 import Select from "../../Select/Select";
 
 //Albums
-import { albums } from "../../../Music/songs";
+// import { albums } from "../../../Music/songs";
 import ErrorMessage from "../../ErrorMessage/ErrorMessage";
 
 //Style
 import "./musicAddForm.css";
+import { Playing } from "../../../Context/Playing";
 
 function MusicAddForm() {
+  const {albums} = useContext(Playing)
   const [songName, setSongName] = useState("");
   const [albumName, setAlbumName] = useState("");
   const [song, setSong] = useState({});
@@ -28,12 +30,12 @@ function MusicAddForm() {
       tempo_albumNameList.push(album.name);
     });
     setAlbumsNameList(tempo_albumNameList);
-  }, []);
+  }, [albums]);
 
   const handleInputChange = (input, setValue) => {
     setValue(input);
   };
-  console.log(song);
+ 
 
   const handleSubmit = (e) => {
     e.preventDefault();

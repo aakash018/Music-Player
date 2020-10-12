@@ -3,7 +3,7 @@ import axios from "axios";
 
 import DropDownMenu from "../../DropDownMenu/DropDownMenu";
 
-import { albums } from "../../../Music/songs";
+// import { albums } from "../../../Music/songs";
 import { Playing } from "../../../Context/Playing";
 import ModalContainer from "../../ModalContainer/ModalContainer";
 import SearchBar from "../../SearchBar/SearchBar";
@@ -13,13 +13,14 @@ import { FillSongs } from "../../../CustomHooks/useFillSongs";
 import AddAlbums from "./AddAlbums/AddAlbums";
 import AlbumsForm from "./AddAlbums/AlbumsAddingForm/AlbumsForm";
 function AlbumsSelection({ show, statusOfMusicPlaying }) {
-  const { songs, setSongs, audio, setPlaying, setCurrentSong } = useContext(
+  const { songs, setSongs, audio, setPlaying, setCurrentSong, albums } = useContext(
     Playing
   );
 
   const [showAlbumFormModal, setAlbumFormModal] = useState(false);
   const [changeCurrentAlbum, setChangeCurrentAlbum] = useState(false);
 
+  
   //This is needed to convert albums name and function to change album to object for DropMenu.
   const setFirstDropDownOptions = () => {
     const searchedAlbum_Tempo = { All: () => handleAlbumChange("") };
@@ -30,11 +31,15 @@ function AlbumsSelection({ show, statusOfMusicPlaying }) {
     return searchedAlbum_Tempo;
   };
 
-  const [dropDownOptions, setDropDownOptions] = useState(() =>
-    setFirstDropDownOptions()
-  );
+  const [dropDownOptions, setDropDownOptions] = useState({});
 
-  //
+  //काम चलाउ 
+  useEffect(() => {
+   if(albums[0] != null) {
+    setDropDownOptions(() =>
+    setFirstDropDownOptions())
+   }
+  },[albums])
 
   useEffect(() => {
     if (changeCurrentAlbum) {
@@ -56,7 +61,7 @@ function AlbumsSelection({ show, statusOfMusicPlaying }) {
   };
 
   const handleAlbumChange = (albumName) => {
-    console.log(albumName);
+   
     axios
       .get("/api/albumChange", { params: { albumName: albumName } })
       .then((res) => {

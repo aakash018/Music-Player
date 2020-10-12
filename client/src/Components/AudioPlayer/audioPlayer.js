@@ -8,7 +8,7 @@ import SongNameDisplay from "./SongNameDisplay/songNameDisplay";
 import ProgressBar from "../ProgressBar/ProgressBar";
 
 //Album Array
-import { albums } from "../../Music/songs";
+// import { albums } from "../../Music/songs";
 
 //Icons
 import MdPause from "react-ionicons/lib/MdPause";
@@ -26,8 +26,9 @@ function AudioPlayer({
   audio,
   songs,
   indexOfCurrentSong,
+  
 }) {
-  const { playing, setPlaying, volume } = useContext(Playing);
+  const { playing, setPlaying, volume, albums } = useContext(Playing);
   const [playNextSong, setPlayNext] = useState(false);
 
   const handlePrevSong = () => {
@@ -95,7 +96,7 @@ function AudioPlayer({
         <div
           className={slider ? "audioPlayerWraper " : "audioPlayerWraper show"}
         >
-          <section className="coverSection" onClick={handleSlider}>
+          {albums[0] != null && <section className="coverSection" onClick={handleSlider}>
             <img
               src={
                 handleFindingAlbum(
@@ -108,7 +109,7 @@ function AudioPlayer({
               alt=""
             />
           </section>
-
+}
           <section className="playerSection">
             <section className="displayName">
               <SongNameDisplay

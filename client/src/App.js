@@ -34,6 +34,7 @@ function App() {
   const audio = new Audio(currentSong);
 
   const toggle = () => {
+    if(songs[0] != null){
     if (audio.paused) {
       if (audio.src === "") {
         audio.src = songs[indexOfCurrentSong.current].song;
@@ -44,11 +45,14 @@ function App() {
       document.title = "Music App";
       audio.pause();
     }
+  } else {
+    return
+  }
   };
 
   return (
     <div className="App">
-      {console.log(albums)}
+      
       <WelcomeElements
         toggle={toggle}
         setCurrentSong={setCurrentSong}
@@ -57,6 +61,7 @@ function App() {
         indexOfCurrentSong={indexOfCurrentSong.current}
         currentSong={currentSong}
         setSongs={setSongs}
+        albums={albums}
       />
     </div>
   );
