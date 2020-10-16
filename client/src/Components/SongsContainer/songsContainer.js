@@ -38,8 +38,9 @@ function SongsContainer({ songs, setCurrentSong, audio }) {
     setSongsForCards(songs);
   }, [songs]);
 
-  const handleSongChange = (song) => {
+  const handleSongChange = (song, name) => {
     audio.pause();
+    document.title = name;
     setPlayChosedSong(true);
     setCurrentSong(song);
     setPlaying(true);
@@ -94,7 +95,7 @@ function SongsContainer({ songs, setCurrentSong, audio }) {
           <div
             key={song._id}
             onClick={() => {
-              handleSongChange(song.song);
+              handleSongChange(song.song, song.name);
             }}
           >
             {albums[0] != null && 

@@ -47,7 +47,7 @@ function MusicAddForm() {
       songName === "" ||
       song.name == null ||
       song.type !== "audio/mpeg" ||
-      albumName == null
+      albumName === ""
     ) {
       return setError({
         display: true,

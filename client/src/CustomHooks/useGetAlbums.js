@@ -10,7 +10,7 @@ export function useGetAlbums() {
       return r.keys().map(r);
     }
 
-    const images = importAll(require.context("../Music/albumCovers", false, /\.(jpeg)$/));
+    const images = importAll(require.context("../Music/albumCovers", false, /\.(png|jpeg)$/));
 
     function fillSong(songData) {
       const requiredSongName = images.filter((name) => {

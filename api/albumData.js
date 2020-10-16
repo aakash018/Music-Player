@@ -4,7 +4,7 @@ const router = express()
 const AlbumData = require("../models/albumData")
 
 
-router.get("/getAlbumsData", async (req,res) => {
+router.get("/getAlbumsData", async (_,res) => {
     const albumsData = await AlbumData.find();
     res.json(albumsData);
 })
@@ -24,6 +24,7 @@ router.post("/albumsData", async (req,res) => {
         return res.status(500).send("File Not Fould");
       }
 
+    if(!uploadedCoverImage.mimetype.split("/")[1].match(/\.(png|jpe?g)$/)) throw "Error"     
 
     if(uploadedCoverImage.mimetype === "image/jpeg"){
         image_mineType = "jpeg"
@@ -47,6 +48,7 @@ router.post("/albumsData", async (req,res) => {
 
     } catch {
         console.log("Error")
+        res.status(500).json({errorMEssage: "ServerError"})
     }
 })
 
