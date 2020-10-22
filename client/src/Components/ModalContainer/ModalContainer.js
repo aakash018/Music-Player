@@ -13,8 +13,12 @@ function ModalContainer({
 
   useEffect(() => {
     setShowModal((prevShow) => !prevShow);
+    if(show){
+      document.body.style.overflow = "hidden"
+    }
   }, [show]);
   const handleModalClose = () => {
+    document.body.style.overflowY = "scroll"
     if (typeof closeCallback === "function" && closeCallback != null) {
       closeCallback();
     }
