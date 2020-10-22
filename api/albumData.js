@@ -23,9 +23,8 @@ router.post("/albumsData", async (req,res) => {
     if (uploadedCoverImage == null) {
         return res.status(500).send("File Not Fould");
       }
-
-    if(!uploadedCoverImage.mimetype.split("/")[1].match(/\.(png|jpe?g)$/)) throw "Error"     
-
+      console.log(uploadedCoverImage.mimetype.split("/")[1])
+   
     if(uploadedCoverImage.mimetype === "image/jpeg"){
         image_mineType = "jpeg"
     } else if(uploadedCoverImage.mimetype === "image/png"){
@@ -46,8 +45,8 @@ router.post("/albumsData", async (req,res) => {
      await albumDataToSave.save()
 
 
-    } catch {
-        console.log("Error")
+    } catch (e) {
+        console.log("Error" + e)
         res.status(500).json({errorMEssage: "ServerError"})
     }
 })

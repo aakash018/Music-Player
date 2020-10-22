@@ -5,10 +5,12 @@ function Select({ options, stateToSet }) {
     stateToSet(e.target.value);
   };
 
+  const selectStyle = {width: "70%", height:"30px", fontFamily: "Poppins", cursor: "pointer", outline: "none"}
+
   return (
     <>
-      <select onChange={handleChange}>
-        <option style={{ display: "none", fontFamily: "Poppins" }}>
+      <select onChange={handleChange} style={selectStyle}>
+        <option style={{ display: "none" }}>
           -- Select an Album --
         </option>
         {options.map((option, index) => (

@@ -96,7 +96,9 @@ function AlbumsSelection({ show, statusOfMusicPlaying }) {
               factorToLook="name"
             />
           </section>
+          <section className="albums-dropdownoptions">
           <DropDownMenu show={true} options={dropDownOptions} />
+          </section>
         </div>
       </ModalContainer>
       <section className="albumFormModal">

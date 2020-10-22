@@ -1,0 +1,18 @@
+.defaultButtonsContainer button {
+  background: linear-gradient(to bottom, #11f78c9f, #19f7e598);
+  outline: none;
+  border: none;
+  padding: 9px 50px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: Poppins;
+
+  opacity: 0.8;
+
+  font-weight: 600;
+}
+
+.defaultButtonsContainer button:hover {
+  opacity: 1;
+  box-shadow: 0px 0px 15px #19f7e598;
+}

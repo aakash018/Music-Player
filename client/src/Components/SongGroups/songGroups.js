@@ -30,7 +30,7 @@ function SongGroups() {
 
   const handleAlbumsChange = () => {
     setStatusOfMusicPlaying(audio.paused);
-    console.log(audio.paused);
+    
     audio.pause();
     setPlaying(false);
     setShowalbumMenu((prevShow) => !prevShow);

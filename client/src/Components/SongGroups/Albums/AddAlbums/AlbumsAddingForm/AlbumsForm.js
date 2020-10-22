@@ -4,6 +4,7 @@ import axios from "axios"
 //Components
 import Input from "../../../../Input/Input";
 import Error from "../../../../ErrorMessage/ErrorMessage"
+import DefultButtons from "../../../../DefultButtons/DefultButtons";
 
 
 function AlbumsForm() {
@@ -44,11 +45,11 @@ function AlbumsForm() {
       display: false,
       errorMessage: ""
     })
+    
     if(
       albumName === "" ||
       albumCover === null ||
-      albumArtistName === "" ||
-      albumCover.mimetype === "image/jpeg" || "image/png" || "image/jpg"
+      albumArtistName === "" 
     ) {
       return setError({
         display: true,
@@ -57,22 +58,38 @@ function AlbumsForm() {
       })
     }
 
-    const data = new FormData()
-    data.append("name", albumName)
-    data.append("albumCover", albumCover)
-    data.append("artist", albumArtistName)
+    if (
+      albumCover.type === "image/jpeg" ||
+      albumCover.type === "image/png" ||
+      albumCover.type === "image/jpg"
+    ) {
+      
+
+      const data = new FormData()
+      data.append("name", albumName)
+      data.append("albumCover", albumCover)
+      data.append("artist", albumArtistName)
+  
+  
+      axios.post("/api/albumsData", data, {
+        onUploadProgress: (ProgressEvent) => {
+          let progress =
+          Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100) +
+          "%";
+        console.log(progress);
+        }
+      })
+      .then((res) => console.log(res.data))
+      .catch(console.log("Error"));
+
+    } else {
+      return setError({
+        display: true,
+        errorMessage: "Wrong type of image. Use JPEG or PNG"
+      })
+    }
 
 
-    axios.post("/api/albumsData", data, {
-      onUploadProgress: (ProgressEvent) => {
-        let progress =
-        Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100) +
-        "%";
-      console.log(progress);
-      }
-    })
-    .then((res) => console.log(res.data))
-    .catch(console.log("Error"));
   };
 
   return (
@@ -98,7 +115,7 @@ function AlbumsForm() {
           stateToSet={setAlbumCover}
           handleChange={handleChange}
         />
-        <button type="submit">Submit</button>
+        <DefultButtons type={"submit"} lable="Submit"/>
       </form>
     </div>
   );

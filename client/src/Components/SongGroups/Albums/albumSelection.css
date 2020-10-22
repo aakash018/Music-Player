@@ -5,13 +5,19 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: fixed;
   /* background-color: rgba(160, 255, 71, 0.438); */
 
   transform: translateX(15%);
 }
 
-.add-Album {
+.albums-dropdownoptions {
   position: absolute;
+  top: 50px;
+}
+
+.add-Album {
+  position: fixed;
   top: 15px;
   left: 5px;
 }

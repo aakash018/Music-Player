@@ -3,6 +3,7 @@ import axios from "axios";
 //Components
 import Input from "../../Input/Input";
 import Select from "../../Select/Select";
+import DefultButtons from "../../DefultButtons/DefultButtons"
 
 //Albums
 // import { albums } from "../../../Music/songs";
@@ -88,14 +89,17 @@ function MusicAddForm() {
           stateToSet={setSongName}
           placeHolder="Name of the song"
         />
+        <label style={{color:"white", fontSize: "0.9rem"}}>Choose a mp3 file
         <Input
           handleChange={handleInputChange}
           type="file"
           stateToSet={setSong}
           placeHolder="Cohiise a mp3 song file"
         />
+        </label>
         <Select options={albumsNameList} stateToSet={setAlbumName} />
-        <button type="submit">Submit</button>
+        <DefultButtons type={"submit"} lable="Submit"/>
+        
       </form>
     </div>
   );

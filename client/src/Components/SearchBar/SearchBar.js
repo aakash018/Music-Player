@@ -11,7 +11,6 @@ function SearchBar({ listToSearchFrom, factorToLook, callback }) {
   const handleInput = (input) => {
     const filteredList = listToSearchFrom.filter((element) => {
       if (factorToLook) {
-        console.log(input);
         return element[factorToLook].match(
           new RegExp(escapeRegex(input.trim()), "i")
         );

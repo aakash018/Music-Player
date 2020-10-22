@@ -13,7 +13,7 @@ export function FillSongs(songData) {
 
     return songObject;
   }
-  console.log(songData);
+  
   const songs_tempo = [];
   songData.map((song) => {
     return songs_tempo.push(fillsongsProperty(song));
